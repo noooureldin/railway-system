@@ -1,0 +1,74 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h2>Passenger Profile Information</h2>
+    <p>Enter details as they appear on your passport or official national ID card.</p>
+  </div>
+
+  @if (saveSuccess()) {
+    <div class="alert-banner success">
+      ✓ Profile information saved successfully!
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="alert-banner error">
+      ⚠️ {{ errorMessage() }}
+    </div>
+  }
+
+  <form (ngSubmit)="saveProfile()" class="profile-form">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input 
+        type="text" 
+        [ngModel]="fullName()" 
+        (ngModelChange)="fullName.set($event)" 
+        name="fullName" 
+        placeholder="e.g. Jean Dupont" 
+      />
+      <span class="hint">Format: First Name followed by Last Name.</span>
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input 
+        type="email" 
+        [ngModel]="email()" 
+        (ngModelChange)="email.set($event)" 
+        name="email" 
+        placeholder="name@example.com" 
+      />
+      <span class="hint">Your booking confirmation and ticket PDF will be sent here.</span>
+    </div>
+
+    <div class="form-group">
+      <label>Select Country for Phone Number</label>
+      <select 
+        [ngModel]="selectedCountry().country" 
+        (ngModelChange)="onCountrySelect($event)" 
+        name="countrySelect"
+      >
+        @for (item of countryPhoneList; track item.country) {
+          <option [value]="item.country">{{ item.flag }} {{ item.country }} ({{ item.code }})</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Mobile Phone Number</label>
+      <div class="phone-input-wrap">
+        <span class="code-prefix">{{ dialCode() }}</span>
+        <input 
+          type="tel" 
+          [ngModel]="phoneNumber()" 
+          (ngModelChange)="phoneNumber.set($event)" 
+          name="phoneNumber" 
+          [placeholder]="phonePlaceholder()" 
+        />
+      </div>
+      <span class="hint">Must contain exactly <strong>{{ requiredDigits() }} digits</strong> for {{ selectedCountry().country }}.</span>
+    </div>
+
+    <button type="submit" class="save-btn">Save Passenger Details</button>
+  </form>
+</div>

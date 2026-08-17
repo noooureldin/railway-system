@@ -1,0 +1,50 @@
+<h1 class="page-title">Train types & travel classes</h1>
+<p class="page-subtitle">Compare seating classes, discover high-speed operators, and explore rail passes.</p>
+
+<div class="class-toggle card">
+  <span>Compare comfort level:</span>
+  <div class="toggle-group">
+    <button [class.active]="selectedClass() === '1st'" (click)="setClass('1st')">1st Class</button>
+    <button [class.active]="selectedClass() === '2nd'" (click)="setClass('2nd')">2nd Class</button>
+    <button [class.active]="selectedClass() === '3rd'" (click)="setClass('3rd')">3rd Class / Regional</button>
+  </div>
+
+  @if (selectedClass() === '1st') {
+    <p class="class-desc">
+      <strong>1st Class:</strong> Premium spacious seats, complimentary Wi-Fi, power sockets at every seat, quieter coaches, and optional at-seat food service or lounge access.
+    </p>
+  } @else if (selectedClass() === '2nd') {
+    <p class="class-desc">
+      <strong>2nd Class:</strong> Standard comfortable seating, free Wi-Fi, shared power outlets, and access to the onboard bistro/café car. Best balance of price and comfort.
+    </p>
+  } @else {
+    <p class="class-desc">
+      <strong>3rd Class / Economy Regional:</strong> Budget-friendly standard seating for regional and commuter routes. Great for short trips and unreserved seating options.
+    </p>
+  }
+</div>
+
+<div class="types-grid">
+  @for (t of trainTypes; track t.name) {
+    <div class="card type-card">
+      <div class="type-icon">{{ t.icon }}</div>
+      <h3>{{ t.name }}</h3>
+      <p class="type-countries">{{ t.countries }}</p>
+      <p class="type-speed">{{ t.speed }}</p>
+      <p class="type-desc">{{ t.description }}</p>
+      <a [href]="t.officialWebsite" target="_blank" rel="noopener" class="official-link">Visit Official Site ↗</a>
+    </div>
+  }
+</div>
+
+<h2 class="section-heading">Rail passes & official portals</h2>
+<div class="passes-grid">
+  @for (p of passes; track p.name) {
+    <div class="card pass-card">
+      <h3>{{ p.name }}</h3>
+      <span class="pass-tag">{{ p.bestFor }}</span>
+      <p>{{ p.detail }}</p>
+      <a [href]="p.website" target="_blank" rel="noopener" class="official-link">Get Official Pass ↗</a>
+    </div>
+  }
+</div>

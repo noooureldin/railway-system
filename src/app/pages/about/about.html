@@ -1,0 +1,28 @@
+<h1 class="page-title">About EuroRail</h1>
+<p class="page-subtitle">Making European train travel simple, transparent and enjoyable.</p>
+
+<div class="card intro-card">
+  <p>
+    EuroRail was built for travellers who love the journey as much as the destination.
+    We bring together high-speed, regional and night train operators from across the
+    continent into a single, easy search — so you can plan a trip from Lisbon to
+    Ljubljana without juggling a dozen different national booking sites.
+  </p>
+</div>
+
+<h2 class="section-heading">Why go by train</h2>
+<div class="values-grid">
+  @for (v of values; track v.title) {
+    <div class="card value-card">
+      <div class="value-icon">{{ v.icon }}</div>
+      <h3>{{ v.title }}</h3>
+      <p>{{ v.text }}</p>
+    </div>
+  }
+</div>
+
+<div class="card contact-card">
+  <h2>Get in touch</h2>
+  <p>Questions about a booking or a route we don't cover yet? We'd love to hear from you.</p>
+  <p class="contact-line">✉️ support&#64;eurorail-demo.com &nbsp;|&nbsp; 📍 Based in Alexandria, EG</p>
+</div>

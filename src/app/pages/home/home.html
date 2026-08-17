@@ -1,0 +1,248 @@
+<section class="hero-section">
+  <div class="hero-header">
+    <h1>European Rail Express</h1>
+    <p>Pick a country and city — we'll find the direct train, or the best route through Europe's rail network.</p>
+  </div>
+
+  <form (ngSubmit)="executeSearch()" class="search-card">
+    <div class="selection-columns">
+
+      <!-- Departure Panel -->
+      <div class="route-panel">
+        <span class="panel-label">DEPARTURE CITY</span>
+
+        <div class="city-preview-card">
+          <img [src]="activeFromCity().imageUrl" [alt]="activeFromCity().name" class="city-photo" />
+          <div class="city-photo-overlay">
+            <span class="city-title">{{ activeFromCity().name }}</span>
+            <span class="country-sub">{{ activeFromCity().country }}</span>
+          </div>
+        </div>
+
+        <div class="field-box">
+          <label>Ride From — Country</label>
+          <select [ngModel]="selectedFromCountry()" (ngModelChange)="onFromCountryChange($event)" name="fromCountry">
+            @for (country of countriesList; track country) {
+              <option [value]="country">{{ country }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="field-box">
+          <label>Ride From — City</label>
+          <select [ngModel]="selectedFromCity()" (ngModelChange)="onFromCityChange($event)" name="fromCity">
+            @for (city of fromCitiesInCountry(); track city.name) {
+              <option [value]="city.name">{{ city.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Destination Panel -->
+      <div class="route-panel">
+        <span class="panel-label">DESTINATION CITY</span>
+
+        <div class="city-preview-card">
+          <img [src]="activeToCity().imageUrl" [alt]="activeToCity().name" class="city-photo" />
+          <div class="city-photo-overlay">
+            <span class="city-title">{{ activeToCity().name }}</span>
+            <span class="country-sub">{{ activeToCity().country }}</span>
+          </div>
+        </div>
+
+        <div class="field-box">
+          <label>Ride To — Country</label>
+          <select [ngModel]="selectedToCountry()" (ngModelChange)="onToCountryChange($event)" name="toCountry">
+            @for (country of countriesList; track country) {
+              <option [value]="country">{{ country }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="field-box">
+          <label>Ride To — City</label>
+          <select [ngModel]="selectedToCity()" (ngModelChange)="onToCityChange($event)" name="toCity">
+            @for (city of destinationOptions(); track city.name) {
+              <option [value]="city.name">{{ city.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Travel Class Selection -->
+    <div class="class-selection-container">
+      <span class="section-subtitle">SELECT TRAVEL CLASS & SEAT INTERIOR</span>
+
+      <div class="class-buttons-group">
+        <button
+          type="button"
+          class="class-btn"
+          [class.active]="selectedClass() === '1st'"
+          (click)="selectedClass.set('1st')">
+          🥇 1st Class
+        </button>
+        <button
+          type="button"
+          class="class-btn"
+          [class.active]="selectedClass() === '2nd'"
+          (click)="selectedClass.set('2nd')">
+          🥈 2nd Class
+        </button>
+        <button
+          type="button"
+          class="class-btn"
+          [class.active]="selectedClass() === '3rd'"
+          (click)="selectedClass.set('3rd')">
+          🥉 3rd Class
+        </button>
+      </div>
+
+      <div class="seat-preview-card">
+        <img [src]="activeClassDetails().imageUrl" [alt]="activeClassDetails().title" class="seat-photo" />
+        <div class="seat-info">
+          <h4>{{ activeClassDetails().title }}</h4>
+          <p>{{ activeClassDetails().desc }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-bar">
+      <div class="field-box inline-field">
+        <label>PASSENGERS</label>
+        <select [ngModel]="passengerCount()" (ngModelChange)="passengerCount.set($event)" name="passengers">
+          <option [ngValue]="1">1 Passenger</option>
+          <option [ngValue]="2">2 Passengers</option>
+          <option [ngValue]="3">3 Passengers</option>
+        </select>
+      </div>
+
+      <div class="field-box inline-field">
+        <label>TRAVEL DATE</label>
+        <input type="date" [ngModel]="date()" (ngModelChange)="date.set($event)" name="date" />
+      </div>
+
+      <button type="submit" class="btn-primary search-action-btn">Search Train Routes</button>
+    </div>
+  </form>
+</section>
+
+<!-- Auto-scroll target marker -->
+<div #resultsSection></div>
+
+@if (hasSearched()) {
+  <section class="results-container">
+    <div class="results-header">
+      <h2>Train Route for {{ date() }} ({{ selectedClass() }} Class)</h2>
+      <p>
+        Route: <strong>{{ selectedFromCity() }}, {{ activeFromCity().country }}</strong> ➔ <strong>{{ selectedToCity() }}, {{ activeToCity().country }}</strong>
+        &nbsp;•&nbsp; Straight-line distance: <strong>{{ Math.round(totalDistanceKm()) }} km</strong>
+      </p>
+    </div>
+
+    <div class="trips-stack">
+      @if (directTrip(); as trip) {
+        <div class="trip-card">
+          <div class="train-exterior-box">
+            <img [src]="getTrainExterior(trip.trainType)" [alt]="trip.trainType" class="train-exterior-img" />
+            <span class="train-label">🚆 {{ trip.trainType }} — {{ trip.distanceKm }} km</span>
+          </div>
+
+          <div class="time-block">
+            <span class="time">{{ trip.depTime }}</span>
+            <div class="duration-pill">⏱️ {{ trip.duration }}</div>
+            <span class="time">{{ trip.arrTime }}</span>
+          </div>
+
+          <div class="seat-thumbnail-box">
+            <img [src]="activeClassDetails().imageUrl" [alt]="selectedClass() + ' Class Seat'" class="seat-thumb" />
+            <span class="seat-tag">💺 {{ selectedClass() }} Interior</span>
+          </div>
+
+          <div class="price-block">
+            <span class="amount">€{{ Math.round(trip.price * getClassMultiplier() * passengerCount()) }}</span>
+            <button class="btn-primary book-btn" (click)="openBookingModal(trip)">Book Ticket</button>
+          </div>
+        </div>
+      } @else {
+        <div class="empty-state">
+          <p class="no-direct-text">No direct train between <strong>{{ selectedFromCity() }}</strong> and <strong>{{ selectedToCity() }}</strong>.</p>
+
+          @if (connectingRoute(); as legs) {
+            <div class="suggestion-card">
+              <div class="suggestion-header">
+                <span class="badge-accent">💡 Recommended Route — {{ legs.length }} leg{{ legs.length > 1 ? 's' : '' }}</span>
+              </div>
+
+              <p>Your journey from <strong>{{ selectedFromCity() }}</strong> to <strong>{{ selectedToCity() }}</strong> connects through {{ legs.length - 1 }} intermediate stop{{ legs.length > 2 ? 's' : '' }}.</p>
+
+              @for (leg of legs; track leg.id) {
+                <div class="trip-card inner-trip-card">
+                  <div class="leg-label">Leg {{ $index + 1 }}: {{ leg.fromCity }} ➔ {{ leg.toCity }}</div>
+
+                  <div class="train-exterior-box">
+                    <img [src]="getTrainExterior(leg.trainType)" [alt]="leg.trainType" class="train-exterior-img" />
+                    <span class="train-label">🚆 {{ leg.trainType }} — {{ leg.distanceKm }} km</span>
+                  </div>
+
+                  <div class="time-block">
+                    <span class="time">{{ leg.depTime }}</span>
+                    <div class="duration-pill">⏱️ {{ leg.duration }}</div>
+                    <span class="time">{{ leg.arrTime }}</span>
+                  </div>
+
+                  <div class="seat-thumbnail-box">
+                    <img [src]="activeClassDetails().imageUrl" [alt]="selectedClass() + ' Class Seat'" class="seat-thumb" />
+                    <span class="seat-tag">💺 {{ selectedClass() }} Interior</span>
+                  </div>
+
+                  <div class="price-block">
+                    <span class="amount">€{{ Math.round(leg.price * getClassMultiplier() * passengerCount()) }}</span>
+                    <button class="btn-secondary book-btn" (click)="openBookingModal(leg)">Book Leg {{ $index + 1 }}</button>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <p>No rail connection could be found between {{ selectedFromCity() }} and {{ selectedToCity() }}. Try a different city.</p>
+          }
+        </div>
+      }
+    </div>
+  </section>
+}
+
+<!-- Booking Confirmation Modal Popup -->
+@if (isBookingModalOpen() && selectedTripForBooking(); as trip) {
+  <div class="modal-overlay" (click)="closeBookingModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Confirm Ticket Reservation</h3>
+        <button class="close-btn" (click)="closeBookingModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-summary-grid">
+          <div><strong>Train:</strong> {{ trip.trainType }}</div>
+          <div><strong>Route:</strong> {{ trip.fromCity }} ➔ {{ trip.toCity }}</div>
+          <div><strong>Distance:</strong> {{ trip.distanceKm }} km</div>
+          <div><strong>Departure:</strong> {{ date() }} at {{ trip.depTime }}</div>
+          <div><strong>Class:</strong> {{ selectedClass() }} Class</div>
+          <div><strong>Passengers:</strong> {{ passengerCount() }}</div>
+          <div><strong>Total Price:</strong> €{{ Math.round(trip.price * getClassMultiplier() * passengerCount()) }}</div>
+        </div>
+
+        <div class="modal-seat-preview">
+          <img [src]="activeClassDetails().imageUrl" alt="Seat preview" />
+          <p><strong>Selected Seating:</strong> {{ activeClassDetails().title }}</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" (click)="closeBookingModal()">Cancel</button>
+        <button class="btn-primary" (click)="confirmBooking()">Confirm & Pay</button>
+      </div>
+    </div>
+  </div>
+}

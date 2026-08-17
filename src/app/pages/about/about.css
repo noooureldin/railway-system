@@ -1,0 +1,44 @@
+.intro-card {
+  margin-bottom: 32px;
+}
+
+.intro-card p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.section-heading {
+  margin-bottom: 14px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.value-icon {
+  font-size: 26px;
+}
+
+.value-card h3 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+}
+
+.value-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.contact-card h2 {
+  margin: 0 0 8px;
+}
+
+.contact-line {
+  color: var(--muted);
+  font-size: 14px;
+}

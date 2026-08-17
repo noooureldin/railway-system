@@ -1,0 +1,144 @@
+.class-toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.toggle-group {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.toggle-group button {
+  border: none;
+  background: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.toggle-group button.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.class-desc {
+  flex-basis: 100%;
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.type-card h3 {
+  margin: 8px 0 2px;
+}
+
+.type-icon {
+  font-size: 28px;
+}
+
+.type-countries {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.type-speed {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 2px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.type-desc {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.section-heading {
+  margin-bottom: 14px;
+}
+
+.passes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.pass-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.pass-tag {
+  display: inline-block;
+  background: #eaf4ff;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.pass-card p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--muted);
+}
+.official-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.official-link:hover {
+  text-decoration: underline;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.country-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.country-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.country-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}

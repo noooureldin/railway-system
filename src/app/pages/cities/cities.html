@@ -1,0 +1,26 @@
+<div class="capitals-wrapper">
+  <header class="capitals-header">
+    <h2>Explore Europe's Most Popular Capitals</h2>
+    <p class="capitals-subtitle">20 must-visit capital cities, reachable by rail across the continent.</p>
+  </header>
+
+  <div class="capitals-grid">
+    @for (capital of capitals; track capital.name) {
+      <div class="capital-card">
+        <div class="capital-image-box">
+          <img
+            [src]="capital.imageUrl"
+            [alt]="capital.name"
+            (error)="handleImgError($event)"
+            class="capital-photo"
+          />
+        </div>
+        <div class="capital-info">
+          <h3 class="capital-name">{{ capital.name }}</h3>
+          <p class="capital-country">{{ capital.country }}</p>
+          <a [href]="capital.infoUrl" target="_blank" rel="noopener" class="capital-link">Explore Highlights ↗</a>
+        </div>
+      </div>
+    }
+  </div>
+</div>
