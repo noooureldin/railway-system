@@ -1,0 +1,397 @@
+<div class="home">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+
+    <div class="logo">
+      <img
+        src="/assets/logo.png"
+        alt="Egyptian Railways"
+      >
+    </div>
+
+    <div class="nav-links">
+
+      <a routerLink="/">Home</a>
+
+      <a routerLink="/train-types">
+        Train Types
+      </a>
+
+      <a routerLink="/cities">
+        Cities
+      </a>
+
+      <a routerLink="/about">
+        About Us
+      </a>
+
+      <a routerLink="/my-tickets">
+        My Tickets
+      </a>
+
+      <a routerLink="/profile">
+        Profile
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+
+      <span class="hero-label">
+        EGYPTIAN NATIONAL RAILWAYS
+      </span>
+
+      <h1>
+        Travel Across Egypt
+        <br>
+        With Comfort & Safety
+      </h1>
+
+      <p>
+        Search trains, book your ticket,
+        and enjoy a comfortable journey
+        across Egypt.
+      </p>
+
+    </div>
+
+
+    <!-- ================= BOOKING CARD ================= -->
+    <div class="booking-card">
+
+      <h2>
+        Book Your Journey
+      </h2>
+
+      <p class="subtitle">
+        Find the best train for your trip
+      </p>
+
+
+      <!-- From / To -->
+      <div class="booking-row">
+
+        <div class="field">
+
+          <label for="from">
+            From
+          </label>
+
+          <select id="from">
+
+            <option value="">
+              Select departure city
+            </option>
+
+            <option value="cairo">
+              Cairo
+            </option>
+
+            <option value="alexandria">
+              Alexandria
+            </option>
+
+            <option value="giza">
+              Giza
+            </option>
+
+            <option value="luxor">
+              Luxor
+            </option>
+
+            <option value="aswan">
+              Aswan
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="swap">
+          ⇄
+        </div>
+
+
+        <div class="field">
+
+          <label for="to">
+            To
+          </label>
+
+          <select id="to">
+
+            <option value="">
+              Select destination
+            </option>
+
+            <option value="cairo">
+              Cairo
+            </option>
+
+            <option value="alexandria">
+              Alexandria
+            </option>
+
+            <option value="giza">
+              Giza
+            </option>
+
+            <option value="luxor">
+              Luxor
+            </option>
+
+            <option value="aswan">
+              Aswan
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- Date / Passengers -->
+      <div class="booking-row">
+
+        <div class="field">
+
+          <label for="date">
+            Travel Date
+          </label>
+
+          <input
+            id="date"
+            type="date"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="passengers">
+            Passengers
+          </label>
+
+          <input
+            id="passengers"
+            type="number"
+            min="1"
+            value="1"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- Search Button -->
+      <button
+        type="button"
+        class="search-btn"
+        routerLink="/search-results"
+      >
+        Search Trains
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURES ================= -->
+  <section class="features">
+
+    <div class="section-title">
+
+      <span>
+        WHY CHOOSE US
+      </span>
+
+      <h2>
+        Everything You Need For Your Journey
+      </h2>
+
+    </div>
+
+
+    <div class="feature-container">
+
+      <div class="feature-card">
+
+        <div class="icon">
+          🚆
+        </div>
+
+        <h3>
+          Multiple Train Types
+        </h3>
+
+        <p>
+          Choose between different train
+          types according to your needs.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="icon">
+          🎫
+        </div>
+
+        <h3>
+          Easy Booking
+        </h3>
+
+        <p>
+          Search and book your train ticket
+          quickly and easily.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card">
+
+        <div class="icon">
+          🛡️
+        </div>
+
+        <h3>
+          Safe Journey
+        </h3>
+
+        <p>
+          Enjoy a reliable and comfortable
+          railway experience.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= POPULAR DESTINATIONS ================= -->
+  <section class="destinations">
+
+    <div class="section-title">
+
+      <span>
+        EXPLORE EGYPT
+      </span>
+
+      <h2>
+        Popular Destinations
+      </h2>
+
+    </div>
+
+
+    <div class="city-container">
+
+      <div class="city-card">
+
+        <h3>
+          Cairo
+        </h3>
+
+        <p>
+          The heart of Egypt
+        </p>
+
+      </div>
+
+
+      <div class="city-card">
+
+        <h3>
+          Alexandria
+        </h3>
+
+        <p>
+          The Mediterranean city
+        </p>
+
+      </div>
+
+
+      <div class="city-card">
+
+        <h3>
+          Luxor
+        </h3>
+
+        <p>
+          City of ancient history
+        </p>
+
+      </div>
+
+
+      <div class="city-card">
+
+        <h3>
+          Aswan
+        </h3>
+
+        <p>
+          Beauty of the Nile
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+
+    <div class="footer-logo">
+      ENR
+    </div>
+
+    <p>
+      Egyptian National Railways
+    </p>
+
+
+    <div class="footer-links">
+
+      <a routerLink="/about">
+        About
+      </a>
+
+      <a routerLink="/cities">
+        Cities
+      </a>
+
+      <a routerLink="/my-tickets">
+        My Tickets
+      </a>
+
+    </div>
+
+
+    <p class="copyright">
+      © 2026 Railway System. All rights reserved.
+    </p>
+
+  </footer>
+
+</div>
