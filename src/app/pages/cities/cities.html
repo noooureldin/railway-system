@@ -1,1 +1,41 @@
-<p>cities works!</p>
+<div class="cities-page">
+
+  <div class="page-header">
+    <h1>Egyptian Governorates</h1>
+    <p>Explore the cities and governorates of Egypt</p>
+  </div>
+
+
+  <div class="cities-grid">
+
+    <div class="city-card" *ngFor="let governorate of governorates">
+
+      <div class="city-image">
+
+        <img
+          [src]="governorate.image"
+          [alt]="governorate.name"
+        >
+
+      </div>
+
+
+      <div class="city-info">
+
+        <h2>{{ governorate.name }}</h2>
+
+        <h3>
+          Capital: {{ governorate.capital }}
+        </h3>
+
+        <p>
+          {{ governorate.description }}
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

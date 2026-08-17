@@ -105,23 +105,20 @@
 }
 
 .hero-label {
-  color: #e94f53;
+  color: black;
 
-  font-size: 13px;
+  font-size: 15px;
 
   font-weight: bold;
 
   letter-spacing: 2px;
 }
-
-.hero-content h1 {
-  font-size: 54px;
-
-  line-height: 1.1;
-
-  margin: 20px 0;
-
-  font-weight: 700;
+.hero-description {
+  color: #000;
+  margin-top: 35px;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 470px;
 }
 
 .hero-content p {
@@ -129,7 +126,7 @@
 
   line-height: 1.7;
 
-  color: #666;
+  color: #0a0a0a;
 
   max-width: 470px;
 }
@@ -405,6 +402,66 @@
 
   color: #ddd;
 }
+.city-card {
+  min-height: 220px;
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  border-radius: 15px;
+
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cairo */
+.city-card:nth-child(1) {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('/assets/ramses.png');
+    background-position: left center;
+}
+
+/* Alexandria */
+.city-card:nth-child(2) {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('/assets/masr-alex.png');
+    background-position:left center;
+
+}
+
+/* Luxor */
+.city-card:nth-child(3) {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('/assets/luxor.png');
+}
+
+/* Aswan */
+.city-card:nth-child(4) {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.65)
+    ),
+    url('/assets/bashtel.png');
+}
 
 
 /* ================= FOOTER ================= */
@@ -562,4 +619,14 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.titleHomePage {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin: 20px 0;
 }
