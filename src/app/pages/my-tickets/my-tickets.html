@@ -1,1 +1,225 @@
-<p>my-tickets works!</p>
+<div class="ticket-page">
+
+  <div class="ticket">
+
+    <!-- ================= TRAIN IMAGE ================= -->
+    <div class="ticket-train">
+
+      <div class="train-image">
+        <img
+          src="https://i.pinimg.com/1200x/bc/78/9c/bc789c9da6e79fd4c225503aef771cfb.jpg"
+          alt="Egyptian Railway Train"
+        >
+      </div>
+
+      <div class="train-overlay">
+        <span class="small-title">ENR</span>
+        <h1>RAIL</h1>
+        <p>Egyptian National Railways</p>
+      </div>
+
+      <div class="train-type">
+        <span>TRAIN TYPE</span>
+        <strong>Talgo Express</strong>
+      </div>
+
+    </div>
+
+
+    <!-- ================= TICKET INFO ================= -->
+    <div class="ticket-info">
+
+      <!-- HEADER -->
+      <div class="ticket-header">
+
+        <div>
+          <span class="label">س ح م</span>
+          <h2>EGYPT RAILWAYS</h2>
+        </div>
+
+        <div class="ticket-status">
+          CONFIRMED
+        </div>
+
+      </div>
+
+
+      <!-- ================= ROUTE ================= -->
+      <div class="route">
+
+        <div class="station">
+
+          <span class="label">FROM</span>
+
+          <h3>Cairo</h3>
+
+          <p>Ramses Station</p>
+
+          <strong>08:30</strong>
+
+        </div>
+
+
+        <div class="route-line">
+
+          <div class="circle"></div>
+
+          <div class="line"></div>
+
+          <span>→</span>
+
+          <div class="circle"></div>
+
+        </div>
+
+
+        <div class="station destination">
+
+          <span class="label">TO</span>
+
+          <h3>Alexandria</h3>
+
+          <p>Misr Station</p>
+
+          <strong>11:00</strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= TRIP DETAILS ================= -->
+      <div class="date-box">
+
+        <div>
+
+          <span class="label">DATE</span>
+
+          <strong>25 AUG 2026</strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="label">DURATION</span>
+
+          <strong>2h 30m</strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="label">TRAIN</span>
+
+          <strong>س ح م 202</strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= PASSENGER INFO ================= -->
+      <div class="passenger-section">
+
+        <div>
+
+          <span class="label">PASSENGER</span>
+
+          <strong>Saif El Deen</strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="label">COACH</span>
+
+          <strong>04</strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="label">SEAT</span>
+
+          <strong>18A</strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= BOTTOM ================= -->
+      <div class="ticket-bottom">
+
+        <div class="ticket-price">
+
+          <span class="label">TOTAL PRICE</span>
+
+          <strong>EGP 250</strong>
+
+        </div>
+
+
+        <!-- QR -->
+        <div class="qr-code">
+
+          <div class="qr-pattern">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+          <small>SHM-202-18A</small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= ACTION BUTTONS ================= -->
+
+  <div class="ticket-actions">
+
+    <button
+      class="download-btn"
+      (click)="downloadTicket()"
+    >
+      Download Ticket
+    </button>
+
+
+    <button
+  class="back-btn"
+  (click)="goHome()">
+  Back to Home
+</button>
+
+  </div>
+
+</div>
