@@ -1,1 +1,38 @@
+<nav class="navbar">
+
+  <div class="logo">
+    <img src="/assets/logo.png" alt="Egyptian Railways">
+  </div>
+
+  <div class="nav-links">
+
+    <a routerLink="/" routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }">
+      Home
+    </a>
+
+    <a routerLink="/train-types" routerLinkActive="active">
+      Train Types
+    </a>
+
+    <a routerLink="/cities" routerLinkActive="active">
+      Cities
+    </a>
+
+    <a routerLink="/about" routerLinkActive="active">
+      About Us
+    </a>
+
+    <a routerLink="/my-tickets" routerLinkActive="active">
+      My Tickets
+    </a>
+
+    <a routerLink="/profile" routerLinkActive="active">
+      Profile
+    </a>
+
+  </div>
+
+</nav>
+
 <router-outlet></router-outlet>

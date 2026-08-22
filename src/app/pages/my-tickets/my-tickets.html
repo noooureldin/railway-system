@@ -1,1 +1,580 @@
-<p>my-tickets works!</p>
+<section class="page-header">
+
+  <div class="header-content">
+
+    <div>
+
+      <span class="page-label">
+        MY JOURNEYS
+      </span>
+
+      <h1>
+        My Tickets
+      </h1>
+
+      <p>
+        View and manage all your train reservations in one place.
+      </p>
+
+    </div>
+
+    <div class="header-icon">
+      🚆
+    </div>
+
+  </div>
+
+</section>
+
+<main class="tickets-container">
+
+  <section class="stats-grid">
+
+    <div class="stat-card">
+
+      <div class="stat-icon blue">
+        🎫
+      </div>
+
+      <div>
+
+        <span>
+          Total Tickets
+        </span>
+
+        <strong>
+          {{ totalTickets }}
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="stat-card">
+
+      <div class="stat-icon green">
+        📅
+      </div>
+
+      <div>
+
+        <span>
+          Upcoming
+        </span>
+
+        <strong>
+          {{ upcomingTickets }}
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="stat-card">
+
+      <div class="stat-icon gray">
+        ✓
+      </div>
+
+      <div>
+
+        <span>
+          Completed
+        </span>
+
+        <strong>
+          {{ completedTickets }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="tickets-section">
+
+    <div class="section-top">
+
+      <div>
+
+        <h2>
+          Your Reservations
+        </h2>
+
+        <p>
+          Manage your current and previous train trips.
+        </p>
+
+      </div>
+
+      <div class="search-box">
+
+        <span>
+          🔍
+        </span>
+
+        <input
+          type="text"
+          placeholder="Search destination..."
+          [(ngModel)]="searchTerm"
+        />
+
+        <button
+          class="clear-search"
+          *ngIf="searchTerm"
+          (click)="searchTerm = ''"
+          title="Clear search"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="filters">
+
+      <button
+        [class.active]="activeFilter === 'All'"
+        (click)="setFilter('All')"
+      >
+
+        All
+
+        <span>
+          {{ totalTickets }}
+        </span>
+
+      </button>
+
+      <button
+        [class.active]="activeFilter === 'Upcoming'"
+        (click)="setFilter('Upcoming')"
+      >
+
+        Upcoming
+
+        <span>
+          {{ upcomingTickets }}
+        </span>
+
+      </button>
+
+      <button
+        [class.active]="activeFilter === 'Completed'"
+        (click)="setFilter('Completed')"
+      >
+
+        Completed
+
+        <span>
+          {{ completedTickets }}
+        </span>
+
+      </button>
+
+      <button
+        [class.active]="activeFilter === 'Cancelled'"
+        (click)="setFilter('Cancelled')"
+      >
+
+        Cancelled
+
+        <span>
+          {{ cancelledTickets }}
+        </span>
+
+      </button>
+
+    </div>
+
+    <div class="tickets-list">
+
+      <article
+        class="ticket-card"
+        *ngFor="let ticket of filteredTickets"
+      >
+
+        <div class="ticket-top">
+
+          <div class="ticket-id">
+            Ticket #{{ ticket.id }}
+          </div>
+
+          <span
+            class="status"
+            [class.completed]="ticket.status === 'Completed'"
+            [class.cancelled]="ticket.status === 'Cancelled'"
+          >
+
+            <span class="status-dot"></span>
+
+            {{ ticket.status }}
+
+          </span>
+
+        </div>
+
+        <div class="route">
+
+          <div class="station">
+
+            <span class="station-label">
+              FROM
+            </span>
+
+            <h3>
+              {{ ticket.from }}
+            </h3>
+
+          </div>
+
+          <div class="route-line">
+
+            <div class="line"></div>
+
+            <span class="train-icon">
+              🚆
+            </span>
+
+          </div>
+
+          <div class="station destination">
+
+            <span class="station-label">
+              TO
+            </span>
+
+            <h3>
+              {{ ticket.to }}
+            </h3>
+
+          </div>
+
+        </div>
+
+        <div class="details-grid">
+
+          <div class="detail">
+
+            <span class="detail-icon">
+              📅
+            </span>
+
+            <div>
+
+              <small>
+                DATE
+              </small>
+
+              <strong>
+                {{ ticket.date }}
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="detail">
+
+            <span class="detail-icon">
+              🕐
+            </span>
+
+            <div>
+
+              <small>
+                DEPARTURE
+              </small>
+
+              <strong>
+                {{ ticket.time }}
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="detail">
+
+            <span class="detail-icon">
+              💺
+            </span>
+
+            <div>
+
+              <small>
+                SEAT
+              </small>
+
+              <strong>
+                {{ ticket.seatNumber }}
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="detail">
+
+            <span class="detail-icon">
+              ⭐
+            </span>
+
+            <div>
+
+              <small>
+                CLASS
+              </small>
+
+              <strong>
+                {{ ticket.trainType }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="ticket-divider"></div>
+
+        <div class="ticket-bottom">
+
+          <div class="price-container">
+
+            <span>
+              Total Price
+            </span>
+
+            <strong>
+
+              {{ ticket.price }}
+
+              <small>
+                EGP
+              </small>
+
+            </strong>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="view-btn"
+              (click)="viewTicket(ticket)"
+            >
+              View Details
+            </button>
+
+            <button
+              class="cancel-btn"
+              *ngIf="ticket.status === 'Upcoming'"
+              (click)="cancelTicket(ticket)"
+            >
+              Cancel
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <div
+        class="empty-state"
+        *ngIf="filteredTickets.length === 0"
+      >
+
+        <div class="empty-icon">
+          🎫
+        </div>
+
+        <h3>
+          No tickets found
+        </h3>
+
+        <p>
+          You don't have any tickets matching your search.
+        </p>
+
+        <button
+          (click)="clearSearch()"
+        >
+          Show All Tickets
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<div
+  class="modal-backdrop"
+  *ngIf="selectedTicket"
+  (click)="closeTicketDetails()"
+>
+
+  <div
+    class="ticket-modal"
+    (click)="$event.stopPropagation()"
+  >
+
+    <div class="modal-header">
+
+      <div>
+
+        <span>
+          TRAIN TICKET
+        </span>
+
+        <h2>
+          Ticket #{{ selectedTicket.id }}
+        </h2>
+
+      </div>
+
+      <button
+        class="close-modal"
+        (click)="closeTicketDetails()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="modal-route">
+
+      <div>
+
+        <small>
+          FROM
+        </small>
+
+        <strong>
+          {{ selectedTicket.from }}
+        </strong>
+
+      </div>
+
+      <span>
+        🚆
+      </span>
+
+      <div class="modal-destination">
+
+        <small>
+          TO
+        </small>
+
+        <strong>
+          {{ selectedTicket.to }}
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="modal-details">
+
+      <div>
+
+        <small>
+          DATE
+        </small>
+
+        <strong>
+          {{ selectedTicket.date }}
+        </strong>
+
+      </div>
+
+      <div>
+
+        <small>
+          TIME
+        </small>
+
+        <strong>
+          {{ selectedTicket.time }}
+        </strong>
+
+      </div>
+
+      <div>
+
+        <small>
+          TRAIN CLASS
+        </small>
+
+        <strong>
+          {{ selectedTicket.trainType }}
+        </strong>
+
+      </div>
+
+      <div>
+
+        <small>
+          SEAT
+        </small>
+
+        <strong>
+          {{ selectedTicket.seatNumber }}
+        </strong>
+
+      </div>
+
+      <div>
+
+        <small>
+          PRICE
+        </small>
+
+        <strong class="modal-price">
+          {{ selectedTicket.price }} EGP
+        </strong>
+
+      </div>
+
+      <div>
+
+        <small>
+          STATUS
+        </small>
+
+        <strong>
+          {{ selectedTicket.status }}
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <button
+        class="modal-close-btn"
+        (click)="closeTicketDetails()"
+      >
+        Close
+      </button>
+
+      <button
+        class="modal-cancel-btn"
+        *ngIf="selectedTicket.status === 'Upcoming'"
+        (click)="cancelTicket(selectedTicket)"
+      >
+        Cancel Ticket
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

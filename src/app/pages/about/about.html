@@ -1,1 +1,42 @@
-<p>about works!</p>
+<h1 class="page-title">About ENR</h1>
+
+<p class="page-subtitle">
+  Connecting Egypt through safe, reliable and comfortable railway travel.
+</p>
+
+<div class="card intro-card">
+  <p>
+    Egyptian National Railways (ENR) is Egypt's national railway organization,
+    connecting major cities and destinations across the country.
+    ENR provides passengers with a wide range of railway services, making
+    train travel an important and convenient way to explore Egypt.
+  </p>
+</div>
+
+<h2 class="section-heading">Why travel by train</h2>
+
+<div class="values-grid">
+  @for (v of values; track v.title) {
+    <div class="card value-card">
+      <div class="value-icon">{{ v.icon }}</div>
+      <h3>{{ v.title }}</h3>
+      <p>{{ v.text }}</p>
+    </div>
+  }
+</div>
+
+<div class="card contact-card">
+  <h2>Get in touch</h2>
+
+  <p>
+    Have a question about train routes, services or your journey?
+    We are here to help.
+  </p>
+
+  <p class="contact-line">
+    ✉️ info&#64;enr.gov.eg
+    &nbsp;|&nbsp;
+    📍 Cairo, Egypt
+  </p>
+</div>
+```

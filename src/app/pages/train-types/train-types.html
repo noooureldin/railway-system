@@ -1,1 +1,34 @@
-<p>train-types works!</p>
+<div class="page-wrapper py-5" dir="rtl">
+  <div class="container">
+    <div class="text-center mb-5 title-container">
+      <h1 class="fw-bold section-title text-dark">Available Train Types</h1> 
+      <div class="title-divider">
+        <span class="eye-of-horus-large">𓂀</span>
+      </div>
+      <p class="text-muted fs-5 mt-2">Explore the available train fleet for your upcoming journey</p>
+    </div>
+    <div class="train-list d-flex flex-column gap-5">
+      @for (train of trains; track train.id; let i = $index) {
+        <div class="card pharaoh-card border-0">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-5" [class.order-lg-last]="i % 2 !== 0">
+              <div class="img-wrapper h-100" 
+                   [class.img-right]="i % 2 === 0" 
+                   [class.img-left]="i % 2 !== 0">
+                <img [src]="train.imageUrl" class="w-100 h-100 object-fit-cover" [alt]="train.name">
+              </div>
+            </div>
+            <div class="col-lg-7 p-4 p-lg-5 d-flex align-items-center">
+              <div class="text-start w-100 px-lg-4">
+                <h2 class="fw-bold text-dark mb-4">
+                  {{ train.name }} <span class="pharaoh-icon ms-2">𓂀</span>
+                </h2>
+                <p class="text-secondary mb-0 fs-5 lh-lg">{{ train.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
