@@ -1,40 +1,81 @@
 <div class="cities-page">
-
   <div class="page-header">
-    <h1>Egyptian Governorates</h1>
-    <p>Explore the cities and governorates of Egypt</p>
+
+    <span class="page-label">
+      EXPLORE EGYPT
+    </span>
+
+
   </div>
-
-
   <div class="cities-grid">
 
-    <div class="city-card" *ngFor="let governorate of governorates">
+    @for (governorate of governorates; track governorate.name) {
 
-      <div class="city-image">
+      <div class="city-card">
+        <div class="city-image">
+          <img
+            [src]="governorate.image"
+            [alt]="governorate.name"
+          >
+        </div>
 
-        <img
-          [src]="governorate.image"
-          [alt]="governorate.name"
-        >
+        <div class="city-info">
+          <h2>
+            {{ governorate.name }}
+          </h2>
+
+
+          <h3>
+            Capital:
+            {{ governorate.capital }}
+          </h3>
+
+
+          <p>
+            {{ governorate.description }}
+          </p>
+
+
+          <!-- ================= CITIES ================= -->
+
+          @if (governorate.cities.length > 0) {
+
+            <div class="major-cities">
+
+              <span class="cities-label">
+                Major Cities
+              </span>
+
+
+              <div class="city-tags">
+
+                @for (city of governorate.cities; track city) {
+
+                  <span class="city-tag">
+                    {{ city + " | "}}
+                  </span>
+
+                }
+
+              </div>
+
+            </div>
+
+          }
+
+          <button
+            type="button"
+            class="explore-btn"
+            (click)="openLink(governorate.link)"
+          >
+            Explore
+          </button>
+
+        </div>
 
       </div>
 
-
-      <div class="city-info">
-
-        <h2>{{ governorate.name }}</h2>
-
-        <h3>
-          Capital: {{ governorate.capital }}
-        </h3>
-
-        <p>
-          {{ governorate.description }}
-        </p>
-
-      </div>
-
-    </div>
+    }
 
   </div>
 

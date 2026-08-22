@@ -10,27 +10,8 @@
 }
 
 
-/* ================= NAVBAR ================= */
-
-.navbar {
-  height: 78px;
-  width: 100%;
-
-  background: #ffffff;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0 7%;
-
-  border-bottom: 1px solid #eeeeee;
-
-  position: relative;
-  z-index: 10;
-}
 
 
-/* LOGO */
 
 .logo {
   display: flex;
@@ -98,7 +79,6 @@
 }
 
 
-/* HERO CONTENT */
 
 .hero-content {
   max-width: 520px;
@@ -240,9 +220,6 @@
   margin-bottom: 7px;
 }
 
-
-/* BUTTON */
-
 .search-btn {
   width: 100%;
 
@@ -252,7 +229,7 @@
 
   border-radius: 9px;
 
-  background: #e94f53;
+  background: #ea050d;
 
   color: white;
 

@@ -1,1 +1,122 @@
-<p>profile works!</p>
+<div class="profile-container">
+
+  <div class="profile-header">
+    <h2>Passenger Profile Information</h2>
+    <p>
+      Enter your personal details as they appear on your Egyptian National ID card.
+    </p>
+  </div>
+
+  @if (saveSuccess()) {
+    <div class="alert-banner success">
+      ✓ Profile information saved successfully!
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="alert-banner error">
+      ⚠️ {{ errorMessage() }}
+    </div>
+  }
+
+  <form
+    (ngSubmit)="saveProfile()"
+    class="profile-form"
+  >
+
+    <div class="form-group">
+      <label for="fullName">
+        Full Name
+      </label>
+
+      <input
+        id="fullName"
+        type="text"
+        [ngModel]="fullName()"
+        (ngModelChange)="fullName.set($event)"
+        name="fullName"
+        placeholder="e.g. Noureldin"
+      />
+
+      <span class="hint">
+        Enter your full name as written on your Egyptian National ID.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="nationalId">
+        National ID Number
+      </label>
+
+      <input
+        id="nationalId"
+        type="text"
+        maxlength="14"
+        inputmode="numeric"
+        [ngModel]="nationalId()"
+        (ngModelChange)="nationalId.set($event)"
+        name="nationalId"
+        placeholder="Enter your 14-digit National ID"
+      />
+
+      <span class="hint">
+        Your National ID must contain exactly 14 digits.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="email">
+        Email Address
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        [ngModel]="email()"
+        (ngModelChange)="email.set($event)"
+        name="email"
+        placeholder="name@example.com"
+      />
+
+      <span class="hint">
+        Your booking confirmation and ticket details will be sent here.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">
+        Mobile Phone Number
+      </label>
+
+      <div class="phone-input-wrap">
+        <span class="code-prefix">
+          🇪🇬 +20
+        </span>
+
+        <input
+          id="phoneNumber"
+          type="tel"
+          maxlength="11"
+          inputmode="numeric"
+          [ngModel]="phoneNumber()"
+          (ngModelChange)="phoneNumber.set($event)"
+          name="phoneNumber"
+          placeholder="01XXXXXXXXX"
+        />
+      </div>
+
+      <span class="hint">
+        Enter an Egyptian mobile number starting with 010, 011, 012, or 015.
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      class="save-btn"
+    >
+      Save Passenger Details
+    </button>
+
+  </form>
+
+</div>
